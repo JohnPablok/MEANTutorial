@@ -21,6 +21,17 @@ adminRouter.use(function(req, res, next) {
     next();
     });
 
+//route middleware to validate:name
+adminRouter.param('name', function(req, res, next, name){
+    //do validation on name here
+    //blah blah validation
+    //log something so we know its working
+    console.log('doing name validations on' + name);
+    //once validation is done save the new item in the req
+    req.name = name;
+    //go to the net thing
+    next();
+});
 
 //admin main page, the dashboard (http://localhost:1337/admin)
 adminRouter.get('/', function (req, res) {
