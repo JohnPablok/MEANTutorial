@@ -23,19 +23,23 @@ adminRouter.use(function(req, res, next) {
 
 
 //admin main page, the dashboard (http://localhost:1337/admin)
-    adminRouter.get('/', function (req, res) {
+adminRouter.get('/', function (req, res) {
         res.send('I am the dashboard!');
-    });
+});
 
 //users page (localhost:1337/admin/users)
-    adminRouter.get('/users', function (req, res) {
+adminRouter.get('/users', function (req, res) {
         res.send('I show all the users!');
-    });
+});
+//route with parameters :name
+adminRouter.get('/users/:name', function(req, res){
+    res.send('Hello '+ req.params.name + '!');
+});
 
 //posts page localhost:1337/admin/posts
-    adminRouter.get('/posts', function (req, res) {
+adminRouter.get('/posts', function (req, res) {
         res.send('I show all the posts!');
-    });
+});
 
 //apply the routes to our application
 
