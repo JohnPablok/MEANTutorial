@@ -7,6 +7,21 @@ var path    = require('path');
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+
+//app route testing
+app.route('/login')
+
+    //show the form (GET http://localhost:1337/login)
+    .get(function(req, res){
+        res.send('this is the login form!');
+    })
+
+    //process the form (POST)
+    .post(function(req,res){
+        console.log('processing');
+        res.send('processing the login form!!!');
+    });
+
 //create routes for the admin section
 
 //get an instance of the router
@@ -26,7 +41,7 @@ adminRouter.param('name', function(req, res, next, name){
     //do validation on name here
     //blah blah validation
     //log something so we know its working
-    console.log('doing name validations on' + name);
+    console.log('doing name validations on ' + name);
     //once validation is done save the new item in the req
     req.name = name;
     //go to the net thing
@@ -44,7 +59,7 @@ adminRouter.get('/users', function (req, res) {
 });
 //route with parameters :name
 adminRouter.get('/users/:name', function(req, res){
-    res.send('Hello '+ req.params.name + '!');
+    res.send('Hello '+ req.name + '!');
 });
 
 //posts page localhost:1337/admin/posts
@@ -55,6 +70,8 @@ adminRouter.get('/posts', function (req, res) {
 //apply the routes to our application
 
 app.use('/admin', adminRouter);
+
+
 
 
 
