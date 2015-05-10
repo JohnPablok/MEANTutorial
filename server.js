@@ -8,10 +8,10 @@ var bodyParser = require('body-parser'); //get body-parser
 var morgan = require('morgan'); //used to see requests
 var mongoose = require('mongoose'); //for working w/ the database
 var port = process.env.PORT || 8080; //set the port for our app
-
+var User = require('./app/models/user');
 //connect to our database (hosted on mongolab)
 
-mongoose.connect('mongodb://jpablok:adg000@ds041327.mongolab.com:41327/meantutsdb');
+mongoose.connect('mongodb://localhost:27017/MEANdb');
 
 //APP CONFIGURATION -----------------
 //use body parser so we can grab information from POST requests
